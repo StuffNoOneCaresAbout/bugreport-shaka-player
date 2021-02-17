@@ -1,26 +1,87 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div
+        class="uk-container uk-container-expand uk-light uk-height-viewport"
+        style="background: #0b0e0f"
+    >
+        <nav
+            class="uk-navbar-container uk-container-expand uk-light"
+            style="background: #0b0e0f"
+            uk-navbar
+        >
+            <div class="uk-navbar-left">
+                <router-link class="uk-navbar-item uk-logo uk-text-bold" to="/"
+                    >Test</router-link
+                >
+            </div>
+            <div class="uk-navbar-center uk-flex">
+                <input
+                    class="uk-input"
+                    type="text"
+                    placeholder="Search"
+                    v-model="searchText"
+                    @keypress="onChange($event)"
+                />
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <router-link to="/preferences">Preferences</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/login">Login</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/feed">Feed</router-link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <router-view />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    data() {
+        return {
+            searchText: "",
+            searchSuggestions: []
+        };
+    },
+    methods: {
+        onChange() {}
+    }
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    background: #0b0e0f;
+}
+
+::-webkit-scrollbar {
+    background-color: #15191a;
+    color: #c5bcae;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4b4f52;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5b6469;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #485053;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #0b0e0f;
+}
+
+* {
+    scrollbar-color: #15191a #444a4e;
 }
 </style>
